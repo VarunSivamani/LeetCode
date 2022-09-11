@@ -17,8 +17,33 @@ The final concatenated result is "Goal".
 
 */
 
+// Solution 1
+
 class Solution {
     public String interpret(String command) {
         return command.replace("()", "o").replace("(al)", "al");
+    }
+}
+
+// Solution 2
+
+class Solution {
+    public String interpret(String command) {
+        String str = "";
+
+        for (int i = 0; i < command.length(); i++) {
+            if (command.charAt(i) == 'G') {
+                str += "G";
+            }
+            if (command.charAt(i) == '(') {
+                if (command.charAt(i + 1) == ')') {
+                    str += "o";
+                } else if (command.charAt(i + 1) == 'a') {
+                    str += "al";
+                    i += 2;
+                }
+            }
+        }
+        return str;
     }
 }
