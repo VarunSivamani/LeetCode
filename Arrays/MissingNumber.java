@@ -58,3 +58,17 @@ class Solution2 {
         return nums[nums.length - 1] + 1;
     }
 }
+
+// Solution - 3
+
+class Solution3 {
+    public int missingNumber(int[] nums) {
+        int n = nums.length;
+        int sum = n * (n + 1) / 2;
+
+        for (int i : nums) {
+            sum -= i;
+        }
+        return sum;
+    }
+}
