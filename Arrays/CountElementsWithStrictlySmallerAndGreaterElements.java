@@ -21,6 +21,8 @@ Since there are two elements with the value 3, in total there are 2 elements hav
 
 */
 
+// Solution - 1
+
 class Solution {
     public int countElements(int[] nums) {
         Arrays.sort(nums);
@@ -28,6 +30,43 @@ class Solution {
 
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] > nums[0] && nums[i] < nums[nums.length - 1]) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
+
+// Solution - 2
+
+class Solution2 {
+    public static boolean increasing(int i, int[] nums) {
+        for (int n : nums) {
+            if (n < i) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean decreasing(int i, int[] nums) {
+        for (int n : nums) {
+            if (n > i) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int countElements(int[] nums) {
+        boolean inc = false;
+        boolean dec = false;
+        int count = 0;
+        for (int i : nums) {
+            inc = increasing(i, nums);
+            dec = decreasing(i, nums);
+
+            if (inc && dec) {
                 count++;
             }
         }
