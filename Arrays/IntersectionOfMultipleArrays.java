@@ -42,27 +42,3 @@ class Solution {
         return list;
     }
 }
-
-// Solution - 2
-
-class Solution2 {
-    public List<Integer> intersection(int[][] nums) {
-        Map<Integer, Integer> map = new HashMap<>();
-        List<Integer> list = new ArrayList<>();
-
-        for (int[] arr : nums) {
-            for (int i : arr) {
-                map.put(i, map.getOrDefault(i, 0) + 1);
-            }
-        }
-
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            if (entry.getValue() == nums.length) {
-                list.add(entry.getKey());
-            }
-        }
-
-        Collections.sort(list);
-        return list;
-    }
-}
