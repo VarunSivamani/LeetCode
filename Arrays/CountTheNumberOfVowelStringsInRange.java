@@ -29,6 +29,8 @@ The number of vowel strings in the mentioned range is 3.
 
 */
 
+// Solution - 1
+
 class Solution {
     public int vowelStrings(String[] words, int left, int right) {
         int c = 0;
@@ -48,5 +50,30 @@ class Solution {
             return true;
         }
         return false;
+    }
+}
+
+// Solution - 2
+
+class Solution2 {
+    public int vowelStrings(String[] words, int left, int right) {
+        HashSet<Character> set = new HashSet<>();
+        set.add('a');
+        set.add('e');
+        set.add('i');
+        set.add('o');
+        set.add('u');
+
+        int count = 0;
+
+        for (int i = left; i <= right; i++) {
+            String s = words[i];
+            char ch1 = s.charAt(0);
+            char ch2 = s.charAt(s.length() - 1);
+
+            if (set.contains(ch1) && set.contains(ch2))
+                count++;
+        }
+        return count;
     }
 }
